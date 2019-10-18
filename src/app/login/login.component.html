@@ -1,0 +1,29 @@
+<div class="bg-img" >
+  <mat-card class="login-capsule">
+    <div class="avatar-div">
+      <img src="../assets/rocket/rocket_1.jpeg" alt="Avatar" class="avatar">
+    </div>
+    <div class="error-msg">
+      <p style="text-align:center;color: red">
+        {{loginerrormsg}}
+      </p>
+    </div>
+    <div class="login-form">
+    <div class="text-box-user" >
+        <mat-form-field appearance="outline" >
+          <mat-label>Username</mat-label>
+          <input type="text" matInput placeholder="Username" [value]="username" (input)="username = $event.target.value" required>
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Password" [value]="password" (input)="password = $event.target.value" required>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="submit-button">
+      <button mat-flat-button color="primary" (click)="onSubmit()" >Login</button>
+    </div>
+    </div>
+  </mat-card>
+</div>
