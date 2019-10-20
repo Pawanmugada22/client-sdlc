@@ -3,8 +3,13 @@
     <div class="avatar-div">
       <img src="../assets/rocket/rocket_1.jpeg" alt="Avatar" class="avatar">
     </div>
-    <div class="error-msg">
+    <div class="error-msg" *ngIf="!statuscolor">
       <p style="text-align:center;color: red">
+        {{loginerrormsg}}
+      </p>
+    </div>
+    <div class="error-msg" *ngIf="statuscolor">
+      <p style="text-align:center;color: green">
         {{loginerrormsg}}
       </p>
     </div>
