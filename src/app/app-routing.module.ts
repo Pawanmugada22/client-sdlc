@@ -1,13 +1,15 @@
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './login/home/home.component';
 import { LoginComponent } from './login/login.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SdlcComponent } from './sdlc/sdlc.component';
 
 
 const routes: Routes = [
   { path: 'loginpage', component : LoginComponent },
-  { path: 'home' , component : HomeComponent },
-  { path: '' , redirectTo: 'loginpage', pathMatch: 'full' }
+  { path: 'staging' , component : HomeComponent },
+  { path: '' , redirectTo: 'loginpage', pathMatch: 'full' },
+  { path: 'home' , component : SdlcComponent }
 ];
 
 @NgModule({
