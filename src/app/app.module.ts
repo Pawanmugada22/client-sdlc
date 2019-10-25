@@ -1,7 +1,10 @@
 import { LoginFormService } from './services/login/login-form.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSpinner, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, 
+         MatButtonModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule
+          } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './login/home/home.component';
 import { SdlcComponent } from './sdlc/sdlc.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -18,7 +22,6 @@ import { SdlcComponent } from './sdlc/sdlc.component';
    declarations: [
       AppComponent,
       LoginComponent,
-      MatSpinner,
       HomeComponent,
       SdlcComponent
    ],
@@ -34,6 +37,9 @@ import { SdlcComponent } from './sdlc/sdlc.component';
       MatMenuModule,
       MatToolbarModule,
       MatButtonModule,
+      MatSidenavModule,
+      MatListModule,
+      MatProgressSpinnerModule,
       FormsModule,
       HttpClientModule
    ],

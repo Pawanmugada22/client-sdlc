@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
         this.loginapiservice.submitForm(this.username,this.password)
             .subscribe(( )=>{ },(err)=>{console.log(err);
               this.resphead=err;
+              this.redirectUrl(this.resphead.url);
               console.log(this.resphead.url);
-              this.redirectUrl(this.resphead.url)
             });
         return;
   }

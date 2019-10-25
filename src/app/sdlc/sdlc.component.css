@@ -1,5 +1,27 @@
-.header-text {
-    align-content: center;
-    align-self: center;
-    align-items: center;
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+.nav-is-mobile .nav-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.nav-app-name {
+  margin-left: 8px;
+  align-content: center;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.nav-is-mobile .sidenav-container {
+  flex: 1 0 auto;
 }
