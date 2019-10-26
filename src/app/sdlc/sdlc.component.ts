@@ -10,6 +10,8 @@ export class SdlcComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
   mobtest: boolean=true;
+  listarray: string[]=["Button 1","Button 2","Button 3","Button 4","Button 5"];
+  screenname: string;
 
   fillerNav = Array.from({length: 7}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -23,5 +25,9 @@ export class SdlcComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  setChildScreen(data: string): void {
+    this.screenname=data;
   }
 }

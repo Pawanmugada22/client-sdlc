@@ -1,3 +1,4 @@
+import { WorkspaceComponent } from './sdlc/workspace/workspace.component';
 import { LoginFormService } from './services/login/login-form.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,7 +24,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
       AppComponent,
       LoginComponent,
       HomeComponent,
-      SdlcComponent
+      SdlcComponent,
+      WorkspaceComponent
    ],
    imports: [
       BrowserModule,

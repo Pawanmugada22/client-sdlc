@@ -25,3 +25,22 @@ h1.nav-app-name {
 .nav-is-mobile .sidenav-container {
   flex: 1 0 auto;
 }
+
+mat-sidenav, 
+mat-sidenav.md-locked-open, 
+mat-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 200px !important;
+    width: 85vw !important;
+    max-width: 300px !important;
+} 
+
+.side-nav {
+  background-color: rgba(232, 225, 250, 0.966);
+}
+
+.div-dimensions {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
