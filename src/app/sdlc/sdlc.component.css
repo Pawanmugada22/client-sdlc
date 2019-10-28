@@ -31,7 +31,7 @@ mat-sidenav.md-locked-open,
 mat-sidenav.md-closed.md-locked-open-add-active {
     min-width: 200px !important;
     width: 85vw !important;
-    max-width: 300px !important;
+    max-width: 20% !important;
 } 
 
 .side-nav {
@@ -43,4 +43,14 @@ mat-sidenav.md-closed.md-locked-open-add-active {
   padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.user-options {
+  position: absolute;
+  right: 1%;
+}
+
+.user-menu {
+  display: inline-block;
+  border-radius: 5px;
 }

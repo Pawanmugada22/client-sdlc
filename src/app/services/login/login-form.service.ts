@@ -1,7 +1,7 @@
 import { LocalSessionKeys } from './../../models/local-session-keys';
 import { Md5 } from 'ts-md5/dist/md5';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -28,4 +28,10 @@ export class LoginFormService {
     return this.http.get<LocalSessionKeys>('/helloauthentication',{ observe : 'body' });
     // return this.http.get<LocalSessionKeys>('http://localhost:8080/helloauthentication',{ observe : 'body' });
   }
+
+  signOut() {
+    return this.http.post('/logout',null);
+    // return this.http.post<HttpErrorResponse>('http://localhost:8080/logout',{ observe : "response" });
+  }
+
 }
