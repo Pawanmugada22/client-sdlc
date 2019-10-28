@@ -1,3 +1,4 @@
+import { MenusJson } from './../models/menus-json';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginFormService } from './../services/login/login-form.service';
 import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
@@ -12,10 +13,11 @@ import { Router } from '@angular/router';
 export class SdlcComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
-  screenname: string;
+  screenname: string='My Dashboard';
   resp: HttpErrorResponse;
 
-  fillerNav = Array.from({length: 7}, (_, i) => `Nav Item ${i + 1}`);
+  menus=new MenusJson();
+  fillerNav: string[]=[];
 
   private _mobileQueryListener: () => void;
 
@@ -23,6 +25,7 @@ export class SdlcComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.fillerNav=this.menus.getMenus(localStorage.getItem('role'));
   }
 
   ngOnDestroy(): void {

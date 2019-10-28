@@ -23,11 +23,11 @@
     </mat-toolbar>
 
     <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      <mat-sidenav #snav [mode]="over" [fixedInViewport]="mobileQuery.matches"
         fixedTopGap="56">
         <mat-nav-list *ngFor="let nav of fillerNav">
           <div class="div-dimensions">
-            <a class="side-nav" mat-list-item (click)="this.setChildScreen(nav)">{{nav}}</a>
+            <a class="side-nav" mat-list-item (click)="this.setChildScreen(nav)" (click)="snav.toggle()" >{{nav}}</a>
           </div>
         </mat-nav-list>
       </mat-sidenav>

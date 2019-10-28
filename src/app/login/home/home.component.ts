@@ -2,6 +2,7 @@ import { LoginFormService } from './../../services/login/login-form.service';
 import { Component, OnInit } from '@angular/core';
 import { LocalSessionKeys } from '../../models/local-session-keys';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +12,15 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   sessionkeys: LocalSessionKeys;
+  resphead:HttpErrorResponse;
 
   constructor(loginapiservice: LoginFormService,private router: Router) { 
     loginapiservice.getLocalKeys().subscribe((temp:LocalSessionKeys)=>{
       this.sessionkeys=temp;
       this.viewResponseData(this.sessionkeys);
-},(err)=>{console.log(err);});
+},(err)=>{console.log(err);
+          this.resphead=err;
+          if(this.resphead.status!=200){this.router.navigateByUrl('/loginpage?sessioninvalid');}});
    }
 
    viewResponseData(temp: LocalSessionKeys){

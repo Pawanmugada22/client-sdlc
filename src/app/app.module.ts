@@ -6,6 +6,7 @@ import { MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule,
          MatButtonModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule
           } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './login/home/home.component';
 import { SdlcComponent } from './sdlc/sdlc.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MyDashboardComponent } from './sdlc/workspace/my-dashboard/my-dashboard.component';
+import { PersonalTasksComponent } from './sdlc/workspace/personal-tasks/personal-tasks.component';
 
 
 
@@ -25,7 +27,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
       LoginComponent,
       HomeComponent,
       SdlcComponent,
-      WorkspaceComponent
+      WorkspaceComponent,
+      MyDashboardComponent,
+      PersonalTasksComponent
    ],
    imports: [
       BrowserModule,
