@@ -1,0 +1,46 @@
+.complete-dialog {
+	width: 500px;
+	height: auto;
+	max-height: 75%;
+}
+
+.dialog-dimensions {
+	overflow: auto;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    /* height:100%;
+    width: 100%; */
+}
+
+#scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#scroll::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #673AB7;
+}
+
+.op-heading {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	max-height: 75%;
+}
+
+.op-button {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}

@@ -1,3 +1,44 @@
-<p>
-  personal-tasks works!
-</p>
+<div>
+  <div class="toggle-button">
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="C">
+      <mat-button-toggle value="C" aria-label="Tasks in context">
+        <mat-icon>filter_center_focus</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="N" aria-label="Tasks not in context">
+        <mat-icon>border_all</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <p>
+    This is the title !!
+  </p>
+  <div class="task-panel">
+    <div class="task-card-box" *ngFor="let task of tasklist">
+      <mat-card class="task-card-dimensions">
+          <mat-card-header>
+                {{task}}
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              This is the content !!
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <p>
+              This is the action !!
+            </p>
+          </mat-card-actions>
+          <mat-card-footer>
+            <p>
+              This is the footer !!
+            </p>
+          </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+  <div class="add-button">
+    <button mat-fab color="primary" (click)="createTask()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

@@ -23,7 +23,7 @@
     </mat-toolbar>
 
     <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav #snav [mode]="over" [fixedInViewport]="mobileQuery.matches"
+      <mat-sidenav #snav mode="over" [fixedInViewport]="mobileQuery.matches"
         fixedTopGap="56">
         <mat-nav-list *ngFor="let nav of fillerNav">
           <div class="div-dimensions">
