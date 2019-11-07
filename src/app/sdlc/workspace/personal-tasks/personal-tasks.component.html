@@ -1,6 +1,6 @@
 <div>
   <div class="toggle-button">
-    <mat-button-toggle-group #group="matButtonToggleGroup" value="C">
+    <mat-button-toggle-group #ContextGroup="matButtonToggleGroup" value="C">
       <mat-button-toggle value="C" aria-label="Tasks in context">
         <mat-icon>filter_center_focus</mat-icon>
       </mat-button-toggle>
@@ -13,27 +13,59 @@
     This is the title !!
   </p>
   <div class="task-panel">
-    <div class="task-card-box" *ngFor="let task of tasklist">
-      <mat-card class="task-card-dimensions">
-          <mat-card-header>
-                {{task}}
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              This is the content !!
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <p>
-              This is the action !!
-            </p>
-          </mat-card-actions>
-          <mat-card-footer>
-            <p>
-              This is the footer !!
-            </p>
-          </mat-card-footer>
-      </mat-card>
+    <div class="task-panel2">
+      <div class="task-card-box" *ngFor="let task of perTaskList">
+        <mat-card class="task-card-dimensions">
+          <div class="task-card-inside-div">
+            <mat-card-header class="task-card-header">
+              <div class="task-header-text" >
+                <p class="task-header-text-para" >
+                  {{task.taskCode}}
+                </p>
+              </div>
+              <button class="menu-button" mat-icon-button [matMenuTriggerFor]="cardmenu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #cardmenu="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="statusmenu">
+                  <mat-icon>build</mat-icon>
+                  <span>Change status to </span>
+                </button>
+                <mat-menu #statusmenu="matMenu">
+                  <button mat-menu-item *ngFor="let status of getStatusList(task.taskStatus)">
+                    <mat-icon>gamepad</mat-icon>
+                    <span>{{getStatusName(status)}}</span>
+                  </button>
+                </mat-menu>
+                <button mat-menu-item>
+                  <mat-icon>power_settings_new</mat-icon>
+                  <span>Chnage context</span>
+                </button>
+              </mat-menu>
+            </mat-card-header>
+            <mat-card-content class="task-card-content" (click)="createTask()">
+              <p>
+                This is the content !!
+              </p>
+            </mat-card-content>
+            <!-- <mat-card-actions style="border:1px solid black;">
+              <p>
+                This is the action !!
+              </p>
+            </mat-card-actions> -->
+            <mat-card-footer class="task-card-footer" >
+              <div class="task-status-dot-div" >
+                <span class="task-status-dot" [ngStyle]="this.getStatusDot(task.taskStatus)"></span>
+              </div>
+              <div class="task-status-text-div" >
+                <p style="vertical-align: middle;">
+                  {{getStatusName(task.taskStatus)}}
+                </p>
+              </div>
+            </mat-card-footer>
+          </div>
+        </mat-card>
+      </div>
     </div>
   </div>
   <div class="add-button">

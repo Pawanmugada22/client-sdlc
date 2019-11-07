@@ -13,13 +13,28 @@ import { PerTaskClass } from '../../../models/per-task-class';
 export class PersonalTasksComponent implements OnInit {
 
   tasklist: number[]=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
+  
+  perTaskList: PerTaskClass[]=new Array();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+    this.perTaskList=[]
+    for(let num=1;num<23;num++) {
+      this.task.taskCode=num;
+      this.task.taskContext='C';
+      this.task.taskDescription='task description';
+      this.task.taskName='task name';
+      this.task.taskRemarks='task remarks';
+      this.task.taskStatus='P';
+      this.task.taskSummary='task summary';
+      this.perTaskList.push(this.task);
+    }
+   }
 
   ngOnInit() {
   }
 
   pertask: PerTaskClass=new PerTaskClass();
+  task: PerTaskClass=new PerTaskClass();
 
   createTask(): void {
     this.pertask.taskCode=22;
@@ -34,6 +49,67 @@ export class PersonalTasksComponent implements OnInit {
       data: { perTask: this.pertask, taskOp: false }
     });
 
+  }
+
+  getStatusList(status: string): string[] {
+    var statusList: string[]=['P','I','B','C','D'];
+    statusList.splice(statusList.indexOf(status,0),1);
+    return statusList;
+  }
+
+  getStatusName(status: string): string {
+    switch(status) {
+      case 'C': {
+        return 'Completed';
+      }
+      case 'P': {
+        return 'Pending';
+      }
+      case 'I': {
+        return 'In-Progress';
+      }
+      case 'D': {
+        return 'Delete';
+      }
+      default : {
+        return 'invalid';
+      }
+    }
+  }
+
+  getStatusDot(status: string): any {
+    switch(status) {
+      case 'C': {
+        let dotStyle={
+          backgroundColor: 'green'
+        }
+        return dotStyle;
+      }
+      case 'P': {
+        let dotStyle={
+          backgroundColor: 'red'
+        }
+        return dotStyle;
+      }
+      case 'I': {
+        let dotStyle={
+          backgroundColor: 'orange'
+        }
+        return dotStyle;
+      }
+      case 'D': {
+        let dotStyle={
+          backgroundColor: 'purple'
+        }
+        return dotStyle;
+      }
+      default : {
+        let dotStyle={
+          backgroundColor: 'brown'
+        }
+        return dotStyle;
+      }
+    }
   }
 
 }

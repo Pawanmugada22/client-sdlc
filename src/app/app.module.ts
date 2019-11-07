@@ -6,7 +6,8 @@ import { MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule,
          MatButtonModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule, MatTooltipModule,
          MatSnackBarModule, 
          MatSlideToggleModule,
-         MatButtonToggleModule} from '@angular/material';
+         MatButtonToggleModule,
+         MatTreeModule} from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -49,6 +50,7 @@ import { NewPersonnalTaskComponent } from './sdlc/workspace/personal-tasks/new-p
       MatButtonModule,
       MatSidenavModule,
       MatListModule,
+      MatTreeModule,
       MatDialogModule,
       MatTooltipModule,
       MatProgressSpinnerModule,

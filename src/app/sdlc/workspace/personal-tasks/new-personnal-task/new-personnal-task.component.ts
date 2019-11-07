@@ -27,11 +27,11 @@ export class NewPersonnalTaskComponent {
 
   constructor(public dialogRef: MatDialogRef<NewPersonnalTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PerTaskDialog,private snackBar: MatSnackBar,private taskapi: PerTaskCreateService) {
-        this.Pertask.taskCode=data.perTask.taskCode.valueOf();
-        this.Pertask.taskDescription=data.perTask.taskDescription.valueOf();
-        this.Pertask.taskRemarks=data.perTask.taskRemarks.valueOf();
-        this.Pertask.taskName=data.perTask.taskName.valueOf();
-        this.Pertask.taskSummary=data.perTask.taskSummary.valueOf();
+        this.Pertask.taskCode=data.perTask.taskCode;
+        this.Pertask.taskDescription=data.perTask.taskDescription;
+        this.Pertask.taskRemarks=data.perTask.taskRemarks;
+        this.Pertask.taskName=data.perTask.taskName;
+        this.Pertask.taskSummary=data.perTask.taskSummary;
         this.taskOp=data.taskOp;
         this.edit=data.taskOp;
      }
