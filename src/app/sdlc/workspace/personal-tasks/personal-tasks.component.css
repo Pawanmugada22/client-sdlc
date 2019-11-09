@@ -86,6 +86,14 @@
     cursor:pointer;
 }
 
+.task-card-content-div {
+    overflow: hidden;
+    height: 150px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+}
+
 .task-card-footer {
     position: absolute; 
     bottom: 15px;

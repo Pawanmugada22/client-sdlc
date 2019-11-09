@@ -2,7 +2,7 @@ import { HttprespInterface } from './../../../../models/httpresp/httpresp-interf
 import { HttprespClass } from './../../../../models/httpresp/httpresp-class';
 import { PerTaskClass } from './../../../../models/per-task-class';
 import { PerTask } from './../../../../models/per-task';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { PerTaskDialog } from '../../../../models/per-task-dialog';
 import { PerTaskCreateService } from '../../../../services/per-task/per-task-create.service';
@@ -24,6 +24,7 @@ export class NewPersonnalTaskComponent {
   resphead:HttpErrorResponse;
   httpresp: HttprespClass=new HttprespClass();
   popupmessage: string;
+  index: number;
 
   constructor(public dialogRef: MatDialogRef<NewPersonnalTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PerTaskDialog,private snackBar: MatSnackBar,private taskapi: PerTaskCreateService) {
@@ -32,44 +33,55 @@ export class NewPersonnalTaskComponent {
         this.Pertask.taskRemarks=data.perTask.taskRemarks;
         this.Pertask.taskName=data.perTask.taskName;
         this.Pertask.taskSummary=data.perTask.taskSummary;
+        this.Pertask.taskContext=data.perTask.taskContext;
         this.taskOp=data.taskOp;
         this.edit=data.taskOp;
+        this.index=data.index;
      }
 
     onClose(): void {
-      this.dialogRef.close();
+      this.dialogRef.close({status: false});
     }
 
     onEdit(): void {
       this.edit=!(this.edit);
     }
 
-    openSnackBar(resp: HttprespClass,status: boolean) {
-      console.log(resp.status+resp.message+resp.boolstatus);
-      this.popupmessage=status ? resp.message : 'Error while saving !';
-      console.log(this.popupmessage+'this is from opensnackbar method');
+    openSnackBar(resp: string,status: boolean) {
+      this.popupmessage=status ? resp : 'Error while saving !';
       this.snackBar.open(this.popupmessage,'cancel',{
-        duration: 5 * 1000
+        duration: 1 * 1000
       });
-      setTimeout(()=>{ status ? this.onClose() : noop() },5000);
+      // setTimeout(()=>{ status ? this.onClose() : noop() },5000);
     }
 
     onSave() {
       if(this.taskOp==false) {
         this.taskapi.createNewTask(this.Pertask).subscribe((data: HttpResponse<HttprespClass>)=>{
-          console.log('inside subscribe');
-          this.httpresp=data.body;
-          this.openSnackBar(this.httpresp,(data.status==200 ? true: false));
-          console.log('testing');
+          if(data.status==200){
+            this.Pertask.taskCode=data.body.perTaskCode;
+            this.Pertask.taskStatus='P';
+            this.Pertask.taskContext='C';
+            this.openSnackBar(data.body.message,true);
+            this.dialogRef.close({ taskOp: true, perTask: this.Pertask, index: this.index })
+          } else {
+            this.openSnackBar('Invalid response',false);
+            this.dialogRef.close({ taskOp: false, perTask: this.Pertask, index: this.index })
+          }
         },(err)=>{console.log(err);
           this.resphead=err;
-          console.log(this.httpresp.status);
-          console.log(this.httpresp.message);
-          console.log(this.resphead.status);
           // this.openSnackBar(this.httpresp,(this.resphead.status==200 ? true: false));
-          console.log('Inside onSave method');
           console.log(this.httpresp.status+this.httpresp.message+this.httpresp.boolstatus);});
       } if (this.taskOp==true) {
+        this.taskapi.updateTaskDetails(this.Pertask).subscribe((resp: HttpResponse<string>)=>{
+          if(resp.status==200 && resp.body=='Success'){
+            this.dialogRef.close({ taskOp: true, perTask: this.Pertask, index: this.index });
+            this.openSnackBar('Task details updated successfully',true);
+          } else {
+            this.openSnackBar('Invalid response',false);
+            this.dialogRef.close({ taskOp: false, perTask: this.Pertask, index: this.index });
+          }
+        },(err)=>{console.log(err);});
       }
     }
 

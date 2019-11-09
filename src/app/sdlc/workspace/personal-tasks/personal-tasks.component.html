@@ -1,6 +1,6 @@
 <div>
   <div class="toggle-button">
-    <mat-button-toggle-group #ContextGroup="matButtonToggleGroup" value="C">
+    <mat-button-toggle-group #ContextGroup="matButtonToggleGroup" [(ngModel)]="selectedContext">
       <mat-button-toggle value="C" aria-label="Tasks in context">
         <mat-icon>filter_center_focus</mat-icon>
       </mat-button-toggle>
@@ -9,17 +9,20 @@
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <p>
-    This is the title !!
+  <p *ngIf="selectedContext=='C'">
+    Personnal Tasks Dashboard - Tasks in context
+  </p>
+  <p *ngIf="selectedContext=='N' || selectedContext=='' || selectedContext==undefined">
+    Personnal Tasks Dashboard - Tasks out of context
   </p>
   <div class="task-panel">
     <div class="task-panel2">
-      <div class="task-card-box" *ngFor="let task of perTaskList">
+      <div class="task-card-box" *ngFor="let task of getTaskListArray(selectedContext); let i = index">
         <mat-card class="task-card-dimensions">
           <div class="task-card-inside-div">
             <mat-card-header class="task-card-header">
-              <div class="task-header-text" >
-                <p class="task-header-text-para" >
+              <div class="task-header-text">
+                <p class="task-header-text-para">
                   {{task.taskCode}}
                 </p>
               </div>
@@ -32,32 +35,33 @@
                   <span>Change status to </span>
                 </button>
                 <mat-menu #statusmenu="matMenu">
-                  <button mat-menu-item *ngFor="let status of getStatusList(task.taskStatus)">
+                  <button mat-menu-item *ngFor="let status of getStatusList(task.taskStatus)"
+                   (click)="updatePerTaskStatus(task,status,i,selectedContext)">
                     <mat-icon>gamepad</mat-icon>
                     <span>{{getStatusName(status)}}</span>
                   </button>
                 </mat-menu>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="changePerTaskContext(task,i,selectedContext)">
                   <mat-icon>power_settings_new</mat-icon>
-                  <span>Chnage context</span>
+                  <span>Change context</span>
                 </button>
               </mat-menu>
             </mat-card-header>
-            <mat-card-content class="task-card-content" (click)="createTask()">
-              <p>
-                This is the content !!
-              </p>
+            <mat-card-content class="task-card-content" (click)="editTask(task,i)">
+              <div class="task-card-content-div">
+                <p>
+                  {{task.taskName}}
+                </p>
+                <p style="height: 150px; overflow: hidden;">
+                  {{task.taskSummary}}
+                </p>
+              </div>
             </mat-card-content>
-            <!-- <mat-card-actions style="border:1px solid black;">
-              <p>
-                This is the action !!
-              </p>
-            </mat-card-actions> -->
-            <mat-card-footer class="task-card-footer" >
-              <div class="task-status-dot-div" >
+            <mat-card-footer class="task-card-footer">
+              <div class="task-status-dot-div">
                 <span class="task-status-dot" [ngStyle]="this.getStatusDot(task.taskStatus)"></span>
               </div>
-              <div class="task-status-text-div" >
+              <div class="task-status-text-div">
                 <p style="vertical-align: middle;">
                   {{getStatusName(task.taskStatus)}}
                 </p>
