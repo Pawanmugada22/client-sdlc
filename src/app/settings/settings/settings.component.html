@@ -1,0 +1,92 @@
+<div class="settings-dimensions">
+  <div class="back-button">
+    <button mat-icon-button (click)="backToDashboard()">
+      <mat-icon>keyboard_backspace</mat-icon>
+      Back to dashboard
+    </button>
+  </div>
+  <div class="tab-box-dimensions">
+    <mat-tab-group dynamicHeight class="mat-tab-box">
+      <mat-tab label="Personnal details">
+        <div class="personnal-details-form">
+          <mat-form-field>
+            <input matInput #firstname maxlength="30" placeholder="First name" [(ngModel)]="perDet.firstName">
+            <mat-hint align="end">{{firstname.value?.length || 0}}/30</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #middlename maxlength="30" placeholder="Middle name" [(ngModel)]="perDet.middleName">
+            <mat-hint align="end">{{middlename.value?.length || 0}}/30</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #lastname maxlength="30" placeholder="Last name" [(ngModel)]="perDet.lastName">
+            <mat-hint align="end">{{lastname.value?.length || 0}}/30</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #phnumber maxlength="15" placeholder="Phone number" type="number" [(ngModel)]="perDet.phNo">
+            <mat-hint align="end">{{phnumber.value?.length || 0}}/15</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #emgphnumber maxlength="15" placeholder="Emergency phone name" type="number" [(ngModel)]="perDet.emgPhNo">
+            <mat-hint align="end">{{emgphnumber.value?.length || 0}}/15</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="DOB" [(ngModel)]="perDet.dob">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput #addr1 maxlength="150" placeholder="Address 1" [(ngModel)]="perDet.addr1"></textarea>
+            <mat-hint align="end">{{addr1.value?.length || 0}}/150</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput #addr2 maxlength="150" placeholder="Address 2" [(ngModel)]="perDet.addr2"></textarea>
+            <mat-hint align="end">{{addr2.value?.length || 0}}/150</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #landmark maxlength="50" placeholder="Landmark" [(ngModel)]="perDet.landmark">
+            <mat-hint align="end">{{landmark.value?.length || 0}}/50</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #city maxlength="30" placeholder="City" [(ngModel)]="perDet.city">
+            <mat-hint align="end">{{city.value?.length || 0}}/30</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #state maxlength="30" placeholder="State" [(ngModel)]="perDet.state">
+            <mat-hint align="end">{{state.value?.length || 0}}/30</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #country maxlength="20" placeholder="Country" [(ngModel)]="perDet.country">
+            <mat-hint align="end">{{country.value?.length || 0}}/20</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #postcode maxlength="10" placeholder="Postal code" type="number" [(ngModel)]="perDet.postCode">
+            <mat-hint align="end">{{postcode.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+          <p></p>
+          <button mat-raised-button color="primary" (click)="savePersonnalDetails()">Save</button>
+        </div>
+      </mat-tab>
+      <mat-tab label="Change password">
+        <div class="change-password-div">
+          <mat-form-field>
+            <input matInput placeholder="Enter your old password" [type]="hideo ? 'password' : 'text'" [(ngModel)]="oldPass">
+            <button mat-icon-button matSuffix (click)="hideo = !hideo" [attr.aria-pressed]="hideo">
+              <mat-icon>{{hideo ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter your new password" [type]="hide ? 'password' : 'text'" [(ngModel)]="newPass">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field *ngIf="hide">
+            <input matInput placeholder="Re-enter your new password" type="password" [(ngModel)]="newPass2">
+          </mat-form-field>
+          <p></p>
+          <button mat-raised-button color="primary" (click)="changePassword(hide)">Save</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

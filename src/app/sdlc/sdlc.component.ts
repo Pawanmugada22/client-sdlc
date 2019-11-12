@@ -48,4 +48,8 @@ export class SdlcComponent implements OnDestroy {
       this.router.navigateByUrl('/loginpage?logout');
   }
 
+  goToSettings() {
+    this.router.navigateByUrl('/settings');
+  }
+
 }

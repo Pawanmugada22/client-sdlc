@@ -1,0 +1,40 @@
+.settings-dimensions {
+    display: flex;
+    justify-content: center;
+}
+
+.back-button {
+    position: absolute;
+    height: 50px;
+    left: 50px;
+}
+
+.tab-box-dimensions {
+    padding-top: 50px;
+    height: 90%;
+    width: 66%;
+    padding-bottom: 50px;
+}
+
+.mat-tab-box {
+    border:3px solid #673AB7;
+    border-radius: 8px;
+}
+
+.personnal-details-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+}
+
+.change-password-div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+}
