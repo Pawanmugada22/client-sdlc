@@ -1,0 +1,37 @@
+<div class="team-master">
+  <div>
+    <p>
+      {{type ?  'Edit Team' : 'Create Team'}}
+    </p>
+  </div>
+  <div class="button-op">
+    <button mat-icon-button (click)="onEdit()">
+      <mat-icon matTooltip="Click to edit">edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon matTooltip="Click to close">close</mat-icon>
+    </button>
+  </div>
+  <div class="team-details-form" matDialogContent>
+    <mat-form-field>
+      <input matInput #teamname maxlength="30" placeholder="Team name" [(value)]="teamDet.teamName" required>
+      <mat-hint align="end">{{teamname.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #teamshortname maxlength="8" placeholder="Team short name" [(value)]="teamDet.teamShortName" required>
+      <mat-hint align="end">{{teamshortname.value?.length || 0}}/8</mat-hint>
+    </mat-form-field>
+    <mat-form-field required>
+      <mat-label>Status</mat-label>
+      <mat-select [(value)]="teamDet.status">
+        <mat-option [value]="status.status" *ngFor="let status of teamState">{{status.statusName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput #remarks maxlength="50" placeholder="Remarks" [(ngModel)]="teamDet.remarks"></textarea>
+      <mat-hint align="end">{{remarks.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+    <p></p>
+    <button mat-raised-button color="primary" (click)="saveButton()">Save</button>
+  </div>
+</div>

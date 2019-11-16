@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class SdlcComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
-  screenname: string='Personal Tasks';
+  screenname: string='Team Master';
   resp: HttpErrorResponse;
 
   menus=new MenusJson();

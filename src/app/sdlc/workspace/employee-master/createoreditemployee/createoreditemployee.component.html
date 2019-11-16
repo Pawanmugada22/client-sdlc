@@ -1,0 +1,111 @@
+<div class="employee-master">
+  <div>
+    <p>
+      {{type ?  'Edit Employee' : 'Create Employee'}}
+    </p>
+  </div>
+  <div class="button-op">
+    <button mat-icon-button (click)="onEdit()">
+      <mat-icon matTooltip="Click to edit">edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon matTooltip="Click to close">close</mat-icon>
+    </button>
+  </div>
+  <div class="personnal-details-form" matDialogContent>
+    <mat-form-field>
+      <input matInput #firstname maxlength="30" placeholder="First name" [(ngModel)]="perDet.firstName">
+      <mat-hint align="end">{{firstname.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #middlename maxlength="30" placeholder="Middle name" readonly="true"
+        [(ngModel)]="perDet.middleName">
+      <mat-hint align="end">{{middlename.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #lastname maxlength="30" placeholder="Last name" readonly="true" [(ngModel)]="perDet.lastName">
+      <mat-hint align="end">{{lastname.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field required >
+      <mat-label>Select role</mat-label>
+      <mat-select [(value)]="perDet.roleCode">
+        <mat-option [value]="role.roleCode" *ngFor="let role of roleList">{{role.roleName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field required>
+      <mat-label>Select team</mat-label>
+      <mat-select [(value)]="perDet.teamCode">
+        <mat-option [value]="team.teamCode" *ngFor="let team of teamList">{{team.teamName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field required>
+      <mat-label>Status</mat-label>
+      <mat-select [(value)]="perDet.status">
+        <mat-option [value]="status.status" *ngFor="let status of empState">{{status.statusName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #phnumber maxlength="15" placeholder="Phone number" type="number" readonly="true"
+        [(ngModel)]="perDet.phNo">
+      <mat-hint align="end">{{phnumber.value?.length || 0}}/15</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #emgphnumber maxlength="15" placeholder="Emergency phone name" type="number" readonly="true"
+        [(ngModel)]="perDet.emgPhNo">
+      <mat-hint align="end">{{emgphnumber.value?.length || 0}}/15</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="DOB" readonly="true" [(ngModel)]="perDet.dob">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput #addr1 maxlength="150" placeholder="Address 1" readonly="true"
+        [(ngModel)]="perDet.addr1"></textarea>
+      <mat-hint align="end">{{addr1.value?.length || 0}}/150</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput #addr2 maxlength="150" placeholder="Address 2" readonly="true"
+        [(ngModel)]="perDet.addr2"></textarea>
+      <mat-hint align="end">{{addr2.value?.length || 0}}/150</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #landmark maxlength="50" placeholder="Landmark" readonly="true" [(ngModel)]="perDet.landmark">
+      <mat-hint align="end">{{landmark.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #city maxlength="30" placeholder="City" readonly="true" [(ngModel)]="perDet.city">
+      <mat-hint align="end">{{city.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #state maxlength="30" placeholder="State" readonly="true" [(ngModel)]="perDet.state">
+      <mat-hint align="end">{{state.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #country maxlength="20" placeholder="Country" readonly="true" [(ngModel)]="perDet.country">
+      <mat-hint align="end">{{country.value?.length || 0}}/20</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #postcode maxlength="10" placeholder="Postal code" readonly="true" type="number"
+        [(ngModel)]="perDet.postCode">
+      <mat-hint align="end">{{postcode.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+    <mat-checkbox color=primary [(ngModel)]="perDet.resetPass">
+      {{type ? 'Reset password' : 'Set username and password'}}
+    </mat-checkbox>
+    <mat-form-field *ngIf="perDet.resetPass && !type">
+      <input matInput #username maxlength="15" placeholder="Username" [(ngModel)]="perDet.userName" [readonly]="type" required>
+      <mat-hint align="end">{{username.value?.length || 0}}/15</mat-hint>
+    </mat-form-field>
+    <mat-form-field *ngIf="perDet.resetPass">
+      <input matInput #password maxlength="20" placeholder="Password" [(ngModel)]="perDet.newPassword" required>
+      <mat-hint align="end">{{password.value?.length || 0}}/20</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #remarks maxlength="30" placeholder="Remarks" [(ngModel)]="perDet.remarks">
+      <mat-hint align="end">{{remarks.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+    <p></p>
+    <button mat-raised-button color="primary" (click)="saveButton()">Save</button>
+  </div>
+</div>

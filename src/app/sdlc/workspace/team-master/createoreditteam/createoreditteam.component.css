@@ -1,0 +1,22 @@
+.team-master {
+    position: relative;
+    overflow-anchor: auto;
+}
+
+.button-op {
+    position: absolute;
+    right: 0px;
+    top: -20px;
+}
+
+.team-details-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 0px;
+    overflow: auto;
+    overflow-y:scroll;
+    height: auto;
+}

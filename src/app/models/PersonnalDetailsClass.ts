@@ -1,4 +1,5 @@
 export class PersonnalDetailsClass {
+    empId: number;
     firstName: string;
     middleName: string;
     lastName: string;
@@ -13,9 +14,12 @@ export class PersonnalDetailsClass {
     country: string;
     postCode: string;
     teamCode: number;
-    roleCode: number;
+    roleCode: string;
     status: string;
     shortName: string;
     joiningDate: string;
     remarks: string;
+    resetPass: boolean;
+    userName: string;
+    newPassword: string;
 }

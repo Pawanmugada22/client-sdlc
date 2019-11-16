@@ -1,0 +1,32 @@
+.search-tab-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .search-tab-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.search-content-pad {
+    padding: 5px;
+}
+
+.search-content-button {
+    padding: 15px;
+}
+
+.table-contents-div {
+    display: flex;
+    justify-content: center;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}

@@ -6,7 +6,6 @@ import { NewPersonnalTaskComponent } from './new-personnal-task/new-personnal-ta
 import { PerTaskClass } from '../../../models/per-task-class';
 import { PerTaskCreateService } from '../../../services/per-task/per-task-create.service';
 import { HttpResponse } from '@angular/common/http';
-import { HttprespClass } from '../../../models/httpresp/httpresp-class';
 import { PerTaskStatusUpdate } from '../../../models/PerTaskStatusUpdate';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

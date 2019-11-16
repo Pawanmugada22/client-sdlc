@@ -1,0 +1,53 @@
+<div>
+  <div class="search-tab-div">
+    <mat-form-field class="search-content-pad">
+      <input matInput placeholder="Team code" type="number" [(ngModel)]="searchDet.teamCode">
+    </mat-form-field>
+    <mat-form-field class="search-content-pad">
+      <input matInput placeholder="Team name" [(ngModel)]="searchDet.teamName">
+    </mat-form-field>
+    <mat-form-field class="search-content-pad">
+      <input matInput placeholder="Team short name" [(ngModel)]="searchDet.teamShortName">
+    </mat-form-field>
+    <div class="search-content-button">
+      <button mat-flat-button color="primary" (click)="searchTeam()">Search</button>
+    </div>
+  </div>
+  <div>
+    <div class="table-contents-div" *ngIf="tableDisp">
+      <table mat-table [dataSource]="teamList" class="mat-elevation-z8" style="width: 70%;">
+        <ng-container matColumnDef="teamCode">
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Team code </th>
+          <td mat-cell *matCellDef="let team" style="width: 10%;"> {{team.teamCode}} </td>
+        </ng-container>
+        <ng-container matColumnDef="teamName">
+          <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Team name </th>
+          <td mat-cell *matCellDef="let team" style="width: 20%;"> {{team.teamName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="teamShortName">
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Team short name </th>
+          <td mat-cell *matCellDef="let team" style="width: 10%;"> {{team.teamShortName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Status </th>
+          <td mat-cell *matCellDef="let team" style="width: 10%;"> {{getStatus(team.status)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef style="width: 3%;"> Edit </th>
+          <td mat-cell *matCellDef="let team" style="width: 3%;">
+            <button mat-icon-button (click)="updateTeam(team)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+  <div class="add-button">
+    <button mat-fab color="primary" (click)="createTeam()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
